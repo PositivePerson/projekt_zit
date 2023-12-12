@@ -39,5 +39,9 @@ def video():
     room = request.args.get('room')
     return render_template('video.html', room=room)
 
+@app.route('/contact.html')
+def contact():
+    return render_template('contact.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
