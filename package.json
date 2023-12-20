@@ -1,0 +1,18 @@
+{
+  "name": "Projekt ZIT BG & KS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon nodejs_express_server/server.js"
+  },
+  "dependencies": {
+    "engine.io": "^6.2.0",
+    "express": "^4.18.1",
+    "socket.io": "^4.5.0",
+    "socket.io-client": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
