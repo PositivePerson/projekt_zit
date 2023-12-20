@@ -15,10 +15,6 @@ Run `docker compose -f docker-compose-nodejs.yaml up --build -d` to start video 
 ## Local start
 
 To run the app without docker:
-
-`yarn && yarn dev`
- 
- or if you use npm:
  
 `npm i && npm run dev`
 
