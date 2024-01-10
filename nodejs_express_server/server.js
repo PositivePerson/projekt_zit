@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 
-const app = express();
+const app = require('../public/routing'); // Import the app object from routing.js
 
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
@@ -24,7 +24,7 @@ io.on('connection', socket => {
       offer: data.offer
     });
   });
-  
+
   socket.on('mediaAnswer', data => {
     socket.to(data.to).emit('mediaAnswer', {
       from: data.from,

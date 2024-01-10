@@ -1,28 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Conference Room</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="/static/index.css"/> -->
+    <link rel="stylesheet" href="/index.css"/>
+    <title>Video calling</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-  <h1>Pokój konferencyjny nr {{ room }}</h1>
+<section class="section">
+    <div class="content">
 
-  <!-- Tutaj możesz umieścić elementy symulujące ekran połączenia wideo -->
+        <h1 id="H1heading">Pokój konferencyjny nr {{ room }}</h1>
+        <!-- <img src="/static/webrtc.png">
+        <div class="box">
+            <p>Stack: JavaScript Socket.IO, Python FastAPI, Python aiohttp, Node.JS Express.</p>
+            <p>You may test Peer to Peer video call by opening another tab or opening this website on mobile phone (Safari/Chrome).
+            Source code can be found <a href="https://github.com/matacoder/p2p-video-calling-app">on GitHub</a>.</p>
+        </div> -->
+        <div id="userId"></div>
+        <div class="box">
+            <h2>Połączenia zdalne:</h2>
+            <video id="remoteVideo" playsinline autoplay></video>
+        </div>
+        <div class="box">
+            <h2>Moja kamera:</h2>
+            <video id="localVideo" playsinline autoplay muted></video>
+        </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="box">
+            <h2>Połączeni użytkownicy:</h2>
 
-  <script>
-    // Odczytaj parametr pokoju z adresu URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const room = urlParams.get('room');
-    // Ustaw tytuł strony na numer pokoju
-    document.title = `Pokój ${room}`;
-  </script>
+            <div id="usersList">
+                Brak połączonych użytkowników
+            </div>
+
+            <div>
+                <button id="call">Połącz</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+<!-- <script src="/static/index.js"></script> -->
+<script src="./index.js"></script>
+
+<script>
+  // Odczytaj parametr pokoju z adresu URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const room = urlParams.get('room');
+  // Ustaw tytuł strony na numer pokoju
+  document.title = `Pokój ${room}`;
+  // Ustaw numer pokoju w nagłówku
+  document.getElementById('H1heading').innerHTML = `Pokój konferencyjny nr ${room}`;
+</script>
 </body>
 </html>
